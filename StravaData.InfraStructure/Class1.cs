@@ -1,4 +1,4 @@
-﻿namespace StravaData.InfraStructure
+﻿namespace StravaData.Infrastructure
 {
     public class Class1
     {
