@@ -1,3 +1,6 @@
 <Solution>
   <Project Path="StravaData.API/StravaData.API.csproj" />
+  <Project Path="StravaData.Application/StravaData.Application.csproj" />
+  <Project Path="StravaData.Domain/StravaData.Domain.csproj" />
+  <Project Path="StravaData.InfraStructure/StravaData.InfraStructure.csproj" />
 </Solution>
