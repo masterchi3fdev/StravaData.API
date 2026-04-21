@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/StravaData.Test/">
+    <Project Path="StravaData.Test/StravaData.Domain.Test/StravaData.Domain.Test.csproj" Id="89aaeb68-86b7-4c56-8925-13d4ae2ad2d6" />
+  </Folder>
   <Project Path="StravaData.API/StravaData.API.csproj" Id="16f504a7-92e7-4c90-9b4c-350f94bc9a84" />
   <Project Path="StravaData.Application/StravaData.Application.csproj" />
   <Project Path="StravaData.Domain/StravaData.Domain.csproj" />
