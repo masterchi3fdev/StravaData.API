@@ -30,9 +30,18 @@ namespace StravaData.API.Controllers
         public IActionResult Test()
         {
             var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
+
+            System.Diagnostics.Debug.WriteLine($"User identity: {User.Identity?.IsAuthenticated}");
+            System.Diagnostics.Debug.WriteLine($"Claims count: {claims.Count}");
+            foreach (var claim in claims)
+            {
+                System.Diagnostics.Debug.WriteLine($"Claim: {claim.Type} = {claim.Value}");
+            }
+
             return Ok(new
             {
                 isAuthenticated = User.Identity?.IsAuthenticated,
+                claimsCount = claims.Count,
                 claims
             });
         }
