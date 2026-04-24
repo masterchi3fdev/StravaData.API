@@ -16,7 +16,7 @@ namespace StravaData.API
             builder.Services.AddOpenApi();
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApi(options => {
-                        options.TokenValidationParameters.ValidAudience = configuration["AzureAd:ClientId"];
+                        options.TokenValidationParameters.ValidAudience = $"api://{configuration["AzureAd:ClientId"]}";
                     }, options => builder.Configuration.GetSection("AzureAd")
                 );
 
