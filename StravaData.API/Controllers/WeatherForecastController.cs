@@ -45,5 +45,13 @@ namespace StravaData.API.Controllers
                 claims
             });
         }
+
+        [HttpGet("test-no-auth")]
+        [AllowAnonymous]
+        public IActionResult TestNoAuth(ILogger<WeatherForecastController> logger)
+        {
+            logger.LogInformation("This endpoint has no auth");
+            return Ok(new { message = "No auth required" });
+        }
     }
 }
