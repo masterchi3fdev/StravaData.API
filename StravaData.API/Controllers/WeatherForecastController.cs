@@ -24,5 +24,17 @@ namespace StravaData.API.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("test")]
+        [Authorize]
+        public IActionResult Test()
+        {
+            var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
+            return Ok(new
+            {
+                isAuthenticated = User.Identity?.IsAuthenticated,
+                claims
+            });
+        }
     }
 }
