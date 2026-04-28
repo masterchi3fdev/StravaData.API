@@ -14,12 +14,14 @@ namespace StravaData.API
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddMicrosoftIdentityWebApi(options => {
-                    options.TokenValidationParameters.ValidAudience = configuration["AzureAd:ClientId"];
-                },
-                options => builder.Configuration.GetSection("AzureAd").Bind(options)
-            );
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = $"https://login.microsoftonline.com/{configuration["AzureAd:TenantId"]}/v2.0";
+                    options.Audience = configuration["AzureAd:ClientId"];
+                    options.TokenValidationParameters.ValidateLifetime = true;
+                });
 
             var app = builder.Build();
 

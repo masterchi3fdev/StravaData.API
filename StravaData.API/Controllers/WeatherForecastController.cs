@@ -24,26 +24,20 @@ namespace StravaData.API.Controllers
             })
             .ToArray();
         }
-
+        
         [HttpGet("test")]
-        [Authorize]
         public IActionResult Test(ILogger<WeatherForecastController> logger)
         {
-            var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
+            logger.LogInformation($"User.Identity.IsAuthenticated: {User.Identity?.IsAuthenticated}");
+            logger.LogInformation($"User.Identity.AuthenticationType: {User.Identity?.AuthenticationType}");
+            logger.LogInformation($"Claims count: {User.Claims.Count()}");
 
-            logger.LogInformation($"User authenticated: {User.Identity?.IsAuthenticated}");
-            logger.LogInformation($"Claims count: {claims.Count}");
-
-            foreach (var claim in claims)
+            foreach (var claim in User.Claims.Take(5))
             {
                 logger.LogInformation($"Claim: {claim.Type} = {claim.Value}");
             }
 
-            return Ok(new
-            {
-                isAuthenticated = User.Identity?.IsAuthenticated,
-                claims
-            });
+            return Ok();
         }
 
         [HttpGet("test-no-auth")]
